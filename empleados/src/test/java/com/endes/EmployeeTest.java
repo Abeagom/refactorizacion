@@ -40,12 +40,19 @@ class EmployeeTest {
 
 	@Test
 	@DisplayName("Prueba del constructor")
-	void test() {
+	void testConstructor() {
 		Employee e2 = new Employee("Jason", 9);
 		String nombreEsperado = "Jason";
 		int añosEsperados=9;
 		assertEquals(nombreEsperado, e2.getName(), "El nombre no coincide");
 		assertEquals(añosEsperados, e2.getEmployeeYears(), "Los años no coinciden");
+	}
+	
+	@Test
+	@DisplayName("Prueba del método toString")
+	void testToString() {
+		String resultadoEsperado = "[Name=John, EmployeeYears=5]";
+		assertEquals(resultadoEsperado, e.toString(), "La cadena no coincide");
 	}
 
 }
