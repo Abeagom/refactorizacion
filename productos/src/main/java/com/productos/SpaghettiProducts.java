@@ -1,13 +1,15 @@
 package com.productos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //Código espagueti para la gestión de productos
 
 public class SpaghettiProducts {
 
  // Arrays estáticos para almacenar datos de productos
- String[] productNames = new String[3];
- double[] productPrices = new double[3];
- int productCount = 0;
+	private String productName;
+	private double productPrice;
 
  // Agrega un producto, pero con manejo de errores disperso y lógica mezclada
  public void addProduct(String name, double price) {
