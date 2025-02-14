@@ -15,6 +15,7 @@ public class ProductManager {
 	/**
 	 * Método para añadir producto al productManager.
 	 * @param p Un objeto de la clase Producto
+	 * @throws Lanza una excepció si el nombre del producto es vacío, el precio es menor que 0 o ya existe en la lista.
 	 */
 	public void addProduct(Product p) {
 		try {
