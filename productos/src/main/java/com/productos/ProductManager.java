@@ -10,30 +10,65 @@ public class ProductManager {
 	 * Constructor de ProductManager
 	 */
 	public ProductManager(){
-		List<Product> products = new ArrayList();
+		this.products = new ArrayList();
 	}
 	/**
 	 * Método para añadir producto al productManager.
 	 * @param p Un objeto de la clase Producto
-	 * @throws Lanza una excepció si el nombre del producto es vacío, el precio es menor que 0 o ya existe en la lista.
+	 * @throws Lanza una excepción si existe otro producto con el mismo nombre
 	 */
 	public void addProduct(Product p) {
 		try {
-			if(p.getProductName()==null || p.getProductName().trim().isEmpty()) {
-				throw new IllegalArgumentException("El nombre no puede estar vacío");
-			}
-			if(p.getProductPrice()<0) {
-				throw new IllegalArgumentException("El precio no puede ser negativo");
-			}
 			for(Product product:products) {
-				if (p.getProductName()==product.getProductName()) {
+				if (p.getProductName().equalsIgnoreCase(product.getProductName())) {
 					throw new IllegalArgumentException("El nombre del producto ya existe");
 				}
 			}
 			this.products.add(p);
 			System.out.println("Producto añadido con éxito");
 		}catch (IllegalArgumentException e){	
-			System.out.println("Error al añadir el producto");
+			System.out.println("Error al añadir el producto. Ya existe.");
+		}
+	}
+	
+	/**
+	 * Lista los productos de la lista
+	 * @throws Exception si la lista está vacía
+	 */
+	public void listProducts() {
+		try {
+			if(products.isEmpty()) {
+				throw new Exception("La lista está vacía");
+			}
+			for (Product p:products) {
+				System.out.println(p);
+			}
+		}catch(Exception e) {
+		}
+	}
+	
+	/**
+	 * Busca un producto en la lista
+	 * @param productName
+	 * @throws Lanza una excepción si la lista está vacía
+	 */
+	public void findProduct(String productName) {
+		try {
+			if(products.isEmpty()) {
+				throw new Exception("La lista está vacía");
+			}
+			boolean found = false;
+			for(Product p:products) {
+				if(p.getProductName().equalsIgnoreCase(productName)) {
+					found=true;
+				}
+			}
+			if(found) {
+				System.out.println("Producto encontrado");
+			}else {
+				System.out.println("Producto no encontrado");
+			}
+		}catch(Exception e) {
 		}
 	}
 	
