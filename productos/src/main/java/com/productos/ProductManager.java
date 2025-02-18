@@ -40,6 +40,7 @@ public class ProductManager {
 			if(products.isEmpty()) {
 				throw new Exception("La lista está vacía");
 			}
+			System.out.println("Lista de productos:");
 			for (Product p:products) {
 				System.out.println(p);
 			}
@@ -61,57 +62,13 @@ public class ProductManager {
 			for(Product p:products) {
 				if(p.getProductName().equalsIgnoreCase(productName)) {
 					found=true;
+					System.out.println("Productos encontrados: \n" + p);
 				}
 			}
-			if(found) {
-				System.out.println("Producto encontrado");
-			}else {
-				System.out.println("Producto no encontrado");
+			if(!found) {
+				System.out.println("Producto no encontrado: " + productName);
 			}
 		}catch(Exception e) {
 		}
 	}
-	
-	 /**public void addProduct(Product p) {
-	     if (name == null || name.trim().isEmpty()) {
-	         System.out.println("Error: Nombre inválido");
-	         return;
-	     }
-	     if (price < 0) {
-	         System.out.println("Error: Precio negativo");
-	         return;
-	     }
-	     try {
-	         if (productCount < productNames.length) {
-	             productNames[productCount] = name;
-	             productPrices[productCount] = price;
-	             productCount++;
-	             System.out.println("Producto agregado: " + name);
-	         } else {
-	             // Conversión improvisada de arrays a listas
-	             System.out.println("Límite de array alcanzado. Convirtiendo a lista...");
-	             java.util.List namesList = new java.util.ArrayList<>();
-	             java.util.List pricesList = new java.util.ArrayList<>();
-	             for (int i = 0; i < productCount; i++) {
-	                 namesList.add(productNames[i]);
-	                 pricesList.add(productPrices[i]);
-	             }
-	             namesList.add(name);
-	             pricesList.add(price);
-	             // Reconstruye los arrays a partir de la lista
-	             productNames = new String[namesList.size()];
-	             productPrices = new double[pricesList.size()];
-	             for (int i = 0; i < namesList.size(); i++) {
-	                 productNames[i] = namesList.get(i);
-	                 productPrices[i] = pricesList.get(i);
-	             }
-	             productCount = namesList.size();
-	             System.out.println("Producto agregado después de conversión: " + name);
-	         }
-	     } catch (Exception e) {
-	         System.out.println("Error al agregar producto: " + e.getMessage());
-	     }
-	 }**/
-	
-	
 }
